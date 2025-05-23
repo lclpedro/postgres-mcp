@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "postgres-server"
+version = "0.1.0"
+description = "MCP para gerenciamento de informações do PostgreSQL"
+authors = ["Your Name <your.email@example.com>"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.10"
+mcp = {extras = ["cli"], version = "^1.7.1"}
+asyncpg = "^0.30.0"
+python-dotenv = "^1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+black = "^25.1.0"
+isort = "^6.0.1"
+flake8 = "^7.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
