@@ -89,12 +89,8 @@ async def get_table_schema(ctx: Context, table_name: str) -> Dict:
         return [dict(row) for row in result]
 
 @mcp.tool()
-async def get_table_data(ctx: Context, query: str) -> Dict:
+async def execute_query(ctx: Context, query: str) -> Dict:
     db = ctx.request_context.lifespan_context.db
-    
-    if query[:6].upper() != "SELECT":
-        return {"error": "Você só pode realizar consultas SELECT"}
-      
     async with db.acquire() as conn:
         logger.info(f"Executando query: {query}")
         result = await conn.fetch(query)
